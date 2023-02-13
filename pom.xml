@@ -6,7 +6,7 @@
 
     <groupId>me.maci</groupId>
     <artifactId>MobileBackPack</artifactId>
-    <version>1.0</version>
+    <version>0.9</version>
     <packaging>jar</packaging>
 
     <name>MobileBackPack</name>
@@ -56,15 +56,44 @@
     <repositories>
         <repository>
             <id>papermc-repo</id>
-            <url>https://repo.papermc.io/repository/maven-public/</url>
+            <url>https://papermc.io/repo/repository/maven-public/</url>
         </repository>
         <repository>
             <id>sonatype</id>
             <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
         <repository>
+            <id>OnARandomBox</id>
+            <url>https://repo.onarandombox.com/content/groups/public</url>
+        </repository>
+        <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
+        </repository>
+        <repository>
+            <id>placeholderapi</id>
+            <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
+        </repository>
+        <repository>
+            <id>vault-repo</id>
+            <url>http://nexus.hc.to/content/repositories/pub_releases</url>
+        </repository>
+        <repository>
+            <id>cloudnet-releases</id>
+            <url>https://repo.cloudnetservice.eu/repository/releases/</url>
+        </repository>
+        <repository>
+            <id>intellectualsites snapshots</id>
+            <url>https://mvn.intellectualsites.com/content/repositories/snapshots/</url>
+        </repository>
+        <!-- This adds the Spigot Maven repository to the build -->
+        <repository>
+            <id>spigot-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+        </repository>
+        <repository>
+            <id>enginehub-maven</id>
+            <url>https://maven.enginehub.org/repo/</url>
         </repository>
     </repositories>
 
@@ -73,6 +102,18 @@
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
             <version>1.19.3-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.MilkBowl</groupId>
+            <artifactId>VaultAPI</artifactId>
+            <version>1.7</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.MilkBowl</groupId>
+            <artifactId>VaultAPI</artifactId>
+            <version>1.7</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

@@ -41,23 +41,24 @@ public class BackPackSafeListener implements Listener {
                 player.openInventory(BackPackManager.backPack(player, UUID, newPage, safeSubPage.get(player)));
             }
             if (slot == 47){
-                int pageTitel = Integer.parseInt(event.getView().getTitle().replace(Main.BACKPACKNAME+level+" §7▬§8▪ §aSeite ", ""));
+                int pageTitel = Integer.parseInt(event.getView().getTitle().replace(Main.BACKPACKNAME+level+" §7▬§8▪ §aPage ", ""));
                 isInTools.put(player, pageTitel);
                 player.openWorkbench(null, true);
             }
             if (slot == 51){
-                int pageTitel = Integer.parseInt(event.getView().getTitle().replace(Main.BACKPACKNAME+level+" §7▬§8▪ §aSeite ", ""));
+                int pageTitel = Integer.parseInt(event.getView().getTitle().replace(Main.BACKPACKNAME+level+" §7▬§8▪ §aPage ", ""));
                 isInTools.put(player, pageTitel);
                 player.openAnvil(null, true);
             }
             if (slot == 45 && item.getType().equals(Material.PLAYER_HEAD)){
-                int pageTitel = Integer.parseInt(event.getView().getTitle().replace(Main.BACKPACKNAME+level+" §7▬§8▪ §aSeite ", ""));
+                int pageTitel = Integer.parseInt(event.getView().getTitle().replace(Main.BACKPACKNAME+level+" §7▬§8▪ §aPage ", ""));
                 player.closeInventory();
                 player.openInventory(BackPackManager.backPack(player, UUID, pageTitel, 1));
             }
             if (slot == 53 && item.getType().equals(Material.PLAYER_HEAD)){
-                int pageTitel = Integer.parseInt(event.getView().getTitle().replace(Main.BACKPACKNAME+level+" §7▬§8▪ §aSeite ", ""));
+                int pageTitel = Integer.parseInt(event.getView().getTitle().replace(Main.BACKPACKNAME+level+" §7▬§8▪ §aPage ", ""));
                 player.closeInventory();
+                player.updateInventory();
                 player.openInventory(BackPackManager.backPack(player, UUID, pageTitel, 2));
             }
             if (slot >= 45 && slot <= 53){
@@ -83,7 +84,7 @@ public class BackPackSafeListener implements Listener {
         assert loreList != null;
         String UUID = BackPackManager.getUUID(backPackItem);
         int level = Main.getConfigManager().getLevel(UUID);
-        int pageTitel = Integer.parseInt(event.getView().getTitle().replace(Main.BACKPACKNAME+level+" §7▬§8▪ §aSeite ", ""));
+        int pageTitel = Integer.parseInt(event.getView().getTitle().replace(Main.BACKPACKNAME+level+" §7▬§8▪ §aPage ", ""));
         BackPackManager.saveInv(player, UUID, pageTitel, event.getInventory());
     }
 }
