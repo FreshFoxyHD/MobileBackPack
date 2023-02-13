@@ -7,11 +7,18 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.IOException;
+
 public class UpgradeBackPackCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (sender instanceof Player){
-            Player player = ((Player) sender).getPlayer();
+            Player player = (Player) sender;
+            try {
+                BackPackManager.onUpgradeBackPack(player, player.getItemInHand());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
         return true;
     }

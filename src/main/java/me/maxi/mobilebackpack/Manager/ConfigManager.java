@@ -27,16 +27,14 @@ public class ConfigManager {
         return config.get(path);
     }
 
-    public void createBackPackData(String uuid, int level, String string1, String string2, String string3, String string4, String string5, String string6, String string7, String string8) throws IOException {
+    public void createBackPackData(String uuid, int level, String page1, String page2, String page3, String page4, String page5, String page6, String page7, String page8) throws IOException {
         config.set("backpack." + uuid + ".level", level);
-        config.set("backpack." + uuid + ".string1", string1);
-        config.set("backpack." + uuid + ".string2", string2);
-        config.set("backpack." + uuid + ".string3", string3);
-        config.set("backpack." + uuid + ".string4", string4);
-        config.set("backpack." + uuid + ".string5", string5);
-        config.set("backpack." + uuid + ".string6", string6);
-        config.set("backpack." + uuid + ".string7", string7);
-        config.set("backpack." + uuid + ".string8", string8);
+        config.set("backpack." + uuid + ".page1", page1);
+        config.set("backpack." + uuid + ".page2", page2);
+        config.set("backpack." + uuid + ".page3", page3);
+        config.set("backpack." + uuid + ".page4", page4);
+        config.set("backpack." + uuid + ".page5", page5);
+        config.set("backpack." + uuid + ".page6", page6);
         save();
     }
 
@@ -49,10 +47,10 @@ public class ConfigManager {
     }
 
     public String getString(String uuid, int number) {
-        return config.getString("backpack." + uuid + ".string"+number);
+        return config.getString("backpack." + uuid + ".page"+number);
     }
-    public void setString(String uuid, int number, String string) throws IOException {
-        config.set("backpack." + uuid + ".string"+number, string);
+    public void setString(String uuid, int number, String page) throws IOException {
+        config.set("backpack." + uuid + ".page"+number, page);
         save();
     }
 }
