@@ -27,7 +27,7 @@ public class ConfigManager {
         return config.get(path);
     }
 
-    public void createBackPackData(String uuid, int level, String string1, String string2, String string3, String string4, String string5, String string6) throws IOException {
+    public void createBackPackData(String uuid, int level, String string1, String string2, String string3, String string4, String string5, String string6, String string7, String string8) throws IOException {
         config.set("backpack." + uuid + ".level", level);
         config.set("backpack." + uuid + ".string1", string1);
         config.set("backpack." + uuid + ".string2", string2);
@@ -35,20 +35,24 @@ public class ConfigManager {
         config.set("backpack." + uuid + ".string4", string4);
         config.set("backpack." + uuid + ".string5", string5);
         config.set("backpack." + uuid + ".string6", string6);
+        config.set("backpack." + uuid + ".string7", string7);
+        config.set("backpack." + uuid + ".string8", string8);
         save();
     }
 
     public int getLevel(String uuid) {
         return config.getInt("backpack." + uuid + ".level");
     }
-    public void setLevel(String uuid, int level) {
+    public void setLevel(String uuid, int level) throws IOException {
         config.set("backpack." + uuid + ".level", level);
+        save();
     }
 
     public String getString(String uuid, int number) {
         return config.getString("backpack." + uuid + ".string"+number);
     }
-    public void setString(String uuid, int number, String string) {
+    public void setString(String uuid, int number, String string) throws IOException {
         config.set("backpack." + uuid + ".string"+number, string);
+        save();
     }
 }

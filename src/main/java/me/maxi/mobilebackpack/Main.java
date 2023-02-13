@@ -1,8 +1,10 @@
 package me.maxi.mobilebackpack;
 
 import me.maxi.mobilebackpack.Manager.ConfigManager;
+import me.maxi.mobilebackpack.Manager.JsonReader;
 import me.maxi.mobilebackpack.Manager.Metrics;
 import me.maxi.mobilebackpack.commands.GiveBackPackCommand;
+import me.maxi.mobilebackpack.commands.UpgradeBackPackCommand;
 import me.maxi.mobilebackpack.listeners.BackPackOpenerListener;
 import me.maxi.mobilebackpack.listeners.BackPackSafeListener;
 import me.maxi.mobilebackpack.listeners.JoinListener;
@@ -13,12 +15,23 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.IOException;
 
 public final class Main extends JavaPlugin {
+    public static final String BACKPACKNAME = "§8┃ » §f§lRucksack §7▬§8▪ §9Level ";
+
     public static ConfigManager configManager;
     public static Main main;
     @Override
     public void onEnable() {
         // Plugin startup logic
         System.out.println(startUP);
+        try {
+            if (!(getDescription().getVersion().equalsIgnoreCase(JsonReader.getLastVersion()))){
+                System.out.println("##############################################");
+                System.out.println("              Update Available                ");
+                System.out.println(" https://www.mythiccloud.net/s/PyM5jgZmQzZeCpC ");
+                System.out.println("##############################################");
+            }
+        } catch (IOException ignored) {
+        }
         int pluginId = 17721;
         Metrics metrics = new Metrics(this, pluginId);
         configManager = new ConfigManager(getDataFolder()+"/backpacks.yml");
@@ -33,6 +46,7 @@ public final class Main extends JavaPlugin {
         pluginManager.registerEvents(new BackPackOpenerListener(), this);
         pluginManager.registerEvents(new BackPackSafeListener(), this);
         getCommand("givebackpack").setExecutor(new GiveBackPackCommand());
+        getCommand("upgradepackback").setExecutor(new UpgradeBackPackCommand());
     }
     @Override
     public void onDisable() {
@@ -44,6 +58,7 @@ public final class Main extends JavaPlugin {
     public static Main getMain(){
         return main;
     }
+
     String startUP = "\n"+
             "    __             ______               __    ______                \n" +
             "   / /_  __  __   / ____/_______  _____/ /_  / ____/___  _  ____  __\n" +

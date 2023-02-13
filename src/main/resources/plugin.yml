@@ -6,3 +6,4 @@ authors: [ FreshFoxy ]
 website: https://mythria.net
 commands:
   givebackpack:
+  upgradebackpack:
