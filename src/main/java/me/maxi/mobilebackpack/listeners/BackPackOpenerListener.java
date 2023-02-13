@@ -11,7 +11,7 @@ public class BackPackOpenerListener implements Listener {
     @EventHandler
     public void interactBlock(PlayerInteractEvent event){
         Player player = event.getPlayer();
-        if (BackPackManager.isBackPack(player.getInventory().getItemInOffHand())event.setCancelled(true);
+        if (BackPackManager.isBackPack(player.getInventory().getItemInOffHand()))event.setCancelled(true);
         if (BackPackManager.isBackPack(player.getItemInHand())){
             if (event.getClickedBlock() == null || event.getClickedBlock().getType().equals(Material.AIR) || !(event.getClickedBlock().getType().equals(Material.ENDER_CHEST))){
                 event.setCancelled(true);
