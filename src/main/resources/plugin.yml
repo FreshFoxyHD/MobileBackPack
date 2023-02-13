@@ -1,0 +1,6 @@
+name: MobileBackPack
+version: '${project.version}'
+main: me.maci.mobilebackpack.Main
+api-version: 1.19
+authors: [ FreshFoxy ]
+website: https://mythria.net
