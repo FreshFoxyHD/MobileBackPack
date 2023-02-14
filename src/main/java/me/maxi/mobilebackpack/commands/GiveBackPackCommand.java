@@ -22,9 +22,7 @@ public class GiveBackPackCommand implements CommandExecutor {
             if (player.hasPermission("mobilebackpack.give")){
                 try {
                     if (args.length == 1){
-                        AnimatedInventory animatedInventory = new AnimatedInventory(player, BackPackManager.openBackPack.get(player));
-                        animatedInventory.open();
-                        //BackPackManager.createBackPackByUUID(args[0], player, player);
+                        BackPackManager.createBackPackByUUID(args[0], player, player);
                     }else {
                         BackPackManager.createBackPack(player, player);
                     }

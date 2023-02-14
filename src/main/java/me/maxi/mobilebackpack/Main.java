@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 public final class Main extends JavaPlugin {
-    public static double  level1 = 10000;
+    public static double  level1 = 1000;
     public static double  level2 = level1*10;
     public static double  level3 = level2*10;
     public static double  level4 = level3*10;

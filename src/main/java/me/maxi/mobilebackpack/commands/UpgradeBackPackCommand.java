@@ -15,7 +15,7 @@ public class UpgradeBackPackCommand implements CommandExecutor {
         if (sender instanceof Player){
             Player player = (Player) sender;
             try {
-                BackPackManager.onUpgradeBackPack(player, player.getItemInHand());
+                player.getInventory().addItem(BackPackManager.onUpgradeBackPack(player.getItemInHand()));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

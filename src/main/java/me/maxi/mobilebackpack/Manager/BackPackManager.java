@@ -96,7 +96,7 @@ public class BackPackManager {
         }
         Main.getConfigManager().setString(UUID, page, safeString);
     }
-    public static void onUpgradeBackPack(Player player, ItemStack itemStack) throws IOException {
+    public static ItemStack onUpgradeBackPack(ItemStack itemStack) throws IOException {
         String uuid = getUUID(itemStack);
         int lvl = Main.getConfigManager().getLevel(uuid);
         ItemStack newItem = itemStack;
@@ -118,8 +118,7 @@ public class BackPackManager {
         if (lvl == 1){//Upgrade LVL 2
             newItem = createBackPackItem(uuid, 2);
         }
-        player.getInventory().remove(itemStack);
-        player.getInventory().addItem(newItem);
+        return newItem;
     }
     public static Inventory backPack(Player player, String uuid, int page, int subpsite){
         ItemStack backPackItem = openBackPack.get(player);
@@ -187,6 +186,33 @@ public class BackPackManager {
             inventory.setItem(53, new ItemBuilder(Material.BARRIER, 1).setDisplayName(" ").addItemFlag(ItemFlag.HIDE_DYE).build());
         }
         return inventory;
+    }
+    public static Inventory putUpgradeItem(){
+        Inventory inventory = Bukkit.createInventory(null, 9*3, "§8┃ » §3§lSystem §7▬§8▪ §cÜbergebe das Item");
+        for (int i = 0; i < 9*3-1; i++) {
+            if (i == 13)continue;
+            ItemStack Glass = new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE, 1).setDisplayName(" ").addItemFlag(ItemFlag.HIDE_DYE).build();
+            inventory.setItem(i, Glass);
+        }
+        inventory.setItem(4, new ItemBuilder(getHead("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzUxY2VkMmU2NDczNjZmOGYzYWQyZGZlNDE1Y2NhODU2NTFiZmFmOTczOWE5NWNkNTdiNmYyMWNiYTA1MyJ9fX0=")).setDisplayName("§aHier").addItemFlag(ItemFlag.HIDE_DYE).build());
+        inventory.setItem(22, new ItemBuilder(getHead("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODhjMGYzN2RlYzc2NGQ2ZTI2YjU3YWE4MjEyNTcyZmJhY2U1ZWU4ZjI3ZjdiNjFjMWZkYWE0N2RkNGM4OTMifX19")).setDisplayName("§aHier").addItemFlag(ItemFlag.HIDE_DYE).build());
+
+        inventory.setItem(0, new ItemBuilder(Material.LIME_STAINED_GLASS_PANE, 1).setDisplayName(" ").addItemFlag(ItemFlag.HIDE_DYE).build());
+        inventory.setItem(9, new ItemBuilder(Material.LIME_STAINED_GLASS_PANE, 1).setDisplayName(" ").addItemFlag(ItemFlag.HIDE_DYE).build());
+        inventory.setItem(18, new ItemBuilder(Material.LIME_STAINED_GLASS_PANE, 1).setDisplayName(" ").addItemFlag(ItemFlag.HIDE_DYE).build());
+        inventory.setItem(1, new ItemBuilder(Material.LIME_STAINED_GLASS_PANE, 1).setDisplayName(" ").addItemFlag(ItemFlag.HIDE_DYE).build());
+        inventory.setItem(10, new ItemBuilder(Material.LIME_STAINED_GLASS_PANE, 1).setDisplayName(" ").addItemFlag(ItemFlag.HIDE_DYE).build());
+        inventory.setItem(11, new ItemBuilder(Material.LIME_STAINED_GLASS_PANE, 1).setDisplayName(" ").addItemFlag(ItemFlag.HIDE_DYE).build());
+
+        inventory.setItem(7, new ItemBuilder(Material.LIME_STAINED_GLASS_PANE, 1).setDisplayName(" ").addItemFlag(ItemFlag.HIDE_DYE).build());
+        inventory.setItem(16, new ItemBuilder(Material.LIME_STAINED_GLASS_PANE, 1).setDisplayName(" ").addItemFlag(ItemFlag.HIDE_DYE).build());
+        inventory.setItem(15, new ItemBuilder(Material.LIME_STAINED_GLASS_PANE, 1).setDisplayName(" ").addItemFlag(ItemFlag.HIDE_DYE).build());
+        inventory.setItem(8, new ItemBuilder(Material.LIME_STAINED_GLASS_PANE, 1).setDisplayName(" ").addItemFlag(ItemFlag.HIDE_DYE).build());
+        inventory.setItem(17, new ItemBuilder(Material.LIME_STAINED_GLASS_PANE, 1).setDisplayName(" ").addItemFlag(ItemFlag.HIDE_DYE).build());
+        inventory.setItem(16, new ItemBuilder(Material.LIME_STAINED_GLASS_PANE, 1).setDisplayName(" ").addItemFlag(ItemFlag.HIDE_DYE).build());
+
+        return inventory;
+
     }
     public static ItemStack getHead(String value) {
         ItemStack skull = new ItemStack(Material.PLAYER_HEAD);
