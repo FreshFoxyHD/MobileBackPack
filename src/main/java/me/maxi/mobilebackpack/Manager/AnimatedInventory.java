@@ -69,11 +69,11 @@ public class AnimatedInventory {
             inventory.setItem(i, Glass);
         }
         inventory.setItem(13, bp);
-        inventory.setItem(29, new ItemBuilder(Material.RED_STAINED_GLASS_PANE, 1).setDisplayName("§c§lNoch nicht Kaufbar").addItemFlag(ItemFlag.HIDE_DYE).build());
-        inventory.setItem(30, new ItemBuilder(Material.RED_STAINED_GLASS_PANE, 1).setDisplayName("§c§lNoch nicht Kaufbar").addItemFlag(ItemFlag.HIDE_DYE).build());
-        inventory.setItem(31, new ItemBuilder(Material.RED_STAINED_GLASS_PANE, 1).setDisplayName("§c§lNoch nicht Kaufbar").addItemFlag(ItemFlag.HIDE_DYE).build());
-        inventory.setItem(32, new ItemBuilder(Material.RED_STAINED_GLASS_PANE, 1).setDisplayName("§c§lNoch nicht Kaufbar").addItemFlag(ItemFlag.HIDE_DYE).build());
-        inventory.setItem(33, new ItemBuilder(Material.RED_STAINED_GLASS_PANE, 1).setDisplayName("§c§lNoch nicht Kaufbar").addItemFlag(ItemFlag.HIDE_DYE).build());
+        inventory.setItem(29, new ItemBuilder(Material.RED_STAINED_GLASS_PANE, 1).setDisplayName("§c§lNicht Kaufbar").setLore("§7Kosten §7- §3$"+String.format("%,.0f", Main.level2)).addItemFlag(ItemFlag.HIDE_DYE).build());
+        inventory.setItem(30, new ItemBuilder(Material.RED_STAINED_GLASS_PANE, 1).setDisplayName("§c§lNicht Kaufbar").setLore("§7Kosten §7- §3$"+String.format("%,.0f", Main.level3)).addItemFlag(ItemFlag.HIDE_DYE).build());
+        inventory.setItem(31, new ItemBuilder(Material.RED_STAINED_GLASS_PANE, 1).setDisplayName("§c§lNicht Kaufbar").setLore("§7Kosten §7- §3$"+String.format("%,.0f", Main.level4)).addItemFlag(ItemFlag.HIDE_DYE).build());
+        inventory.setItem(32, new ItemBuilder(Material.RED_STAINED_GLASS_PANE, 1).setDisplayName("§c§lNicht Kaufbar").setLore("§7Kosten §7- §3$"+String.format("%,.0f", Main.level5)).addItemFlag(ItemFlag.HIDE_DYE).build());
+        inventory.setItem(33, new ItemBuilder(Material.RED_STAINED_GLASS_PANE, 1).setDisplayName("§c§lNicht Kaufbar").setLore("§7Kosten §7- §3$"+String.format("%,.0f", Main.level6)).addItemFlag(ItemFlag.HIDE_DYE).build());
 
         if (level == 1 && Main.getEcoManager().checkPlayerBalance(player) >= Main.level2)inventory.setItem(29, new ItemBuilder(Material.ORANGE_STAINED_GLASS_PANE, 1).setDisplayName("§6§lLevel 2").addItemFlag(ItemFlag.HIDE_DYE).addEnchantment(Enchantment.LUCK, 1, true).addItemFlag(ItemFlag.HIDE_ENCHANTS).setLore("§7Kaufbar §7- §3$"+String.format("%,.0f", Main.level2)).build());
         if (level == 2 && Main.getEcoManager().checkPlayerBalance(player) >= Main.level3)inventory.setItem(30, new ItemBuilder(Material.ORANGE_STAINED_GLASS_PANE, 1).setDisplayName("§6§lLevel 3").addItemFlag(ItemFlag.HIDE_DYE).addEnchantment(Enchantment.LUCK, 1, true).addItemFlag(ItemFlag.HIDE_ENCHANTS).setLore("§7Kaufbar §7- §3$"+String.format("%,.0f", Main.level3)).build());
@@ -81,11 +81,11 @@ public class AnimatedInventory {
         if (level == 4 && Main.getEcoManager().checkPlayerBalance(player) >= Main.level5)inventory.setItem(32, new ItemBuilder(Material.ORANGE_STAINED_GLASS_PANE, 1).setDisplayName("§6§lLevel 5").addItemFlag(ItemFlag.HIDE_DYE).addEnchantment(Enchantment.LUCK, 1, true).addItemFlag(ItemFlag.HIDE_ENCHANTS).setLore("§7Kaufbar §7- §3$"+String.format("%,.0f", Main.level5)).build());
         if (level == 5 && Main.getEcoManager().checkPlayerBalance(player) >= Main.level6)inventory.setItem(33, new ItemBuilder(Material.ORANGE_STAINED_GLASS_PANE, 1).setDisplayName("§6§lLevel 6").addItemFlag(ItemFlag.HIDE_DYE).addEnchantment(Enchantment.LUCK, 1, true).addItemFlag(ItemFlag.HIDE_ENCHANTS).setLore("§7Kaufbar §7- §3$"+String.format("%,.0f", Main.level6)).build());
 
-        if (level >= 2)inventory.setItem(29, new ItemBuilder(Material.GREEN_STAINED_GLASS_PANE, 1).setDisplayName("§c§lLevel 2").addItemFlag(ItemFlag.HIDE_DYE).setLore("§c§lBereits im Besitz").build());
-        if (level >= 3)inventory.setItem(30, new ItemBuilder(Material.GREEN_STAINED_GLASS_PANE, 1).setDisplayName("§c§lLevel 3").addItemFlag(ItemFlag.HIDE_DYE).setLore("§c§lBereits im Besitz").build());
-        if (level >= 4)inventory.setItem(31, new ItemBuilder(Material.GREEN_STAINED_GLASS_PANE, 1).setDisplayName("§c§lLevel 4").addItemFlag(ItemFlag.HIDE_DYE).setLore("§c§lBereits im Besitz").build());
-        if (level >= 5)inventory.setItem(32, new ItemBuilder(Material.GREEN_STAINED_GLASS_PANE, 1).setDisplayName("§c§lLevel 5").addItemFlag(ItemFlag.HIDE_DYE).setLore("§c§lBereits im Besitz").build());
-        if (level >= 6)inventory.setItem(33, new ItemBuilder(Material.GREEN_STAINED_GLASS_PANE, 1).setDisplayName("§c§lLevel 6").addItemFlag(ItemFlag.HIDE_DYE).setLore("§c§lBereits im Besitz").build());
+        if (level >= 2)inventory.setItem(29, new ItemBuilder(Material.GREEN_STAINED_GLASS_PANE, 1).setDisplayName("§c§lLevel 2").addItemFlag(ItemFlag.HIDE_DYE).setLore("§c§lBereits im Besitz").setLore("§cGekauft §7- §3$"+String.format("%,.0f", Main.level2)).build());
+        if (level >= 3)inventory.setItem(30, new ItemBuilder(Material.GREEN_STAINED_GLASS_PANE, 1).setDisplayName("§c§lLevel 3").addItemFlag(ItemFlag.HIDE_DYE).setLore("§c§lBereits im Besitz").setLore("§cGekauft §7- §3$"+String.format("%,.0f", Main.level3)).build());
+        if (level >= 4)inventory.setItem(31, new ItemBuilder(Material.GREEN_STAINED_GLASS_PANE, 1).setDisplayName("§c§lLevel 4").addItemFlag(ItemFlag.HIDE_DYE).setLore("§c§lBereits im Besitz").setLore("§cGekauft §7- §3$"+String.format("%,.0f", Main.level4)).build());
+        if (level >= 5)inventory.setItem(32, new ItemBuilder(Material.GREEN_STAINED_GLASS_PANE, 1).setDisplayName("§c§lLevel 5").addItemFlag(ItemFlag.HIDE_DYE).setLore("§c§lBereits im Besitz").setLore("§cGekauft §7- §3$"+String.format("%,.0f", Main.level5)).build());
+        if (level >= 6)inventory.setItem(33, new ItemBuilder(Material.GREEN_STAINED_GLASS_PANE, 1).setDisplayName("§c§lLevel 6").addItemFlag(ItemFlag.HIDE_DYE).setLore("§c§lBereits im Besitz").setLore("§cGekauft §7- §3$"+String.format("%,.0f", Main.level6)).build());
 
         return inventory;
     }

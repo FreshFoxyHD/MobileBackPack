@@ -3,13 +3,16 @@ package me.maxi.mobilebackpack.listeners;
 import me.maxi.mobilebackpack.Main;
 import me.maxi.mobilebackpack.Manager.AnimatedInventory;
 import me.maxi.mobilebackpack.Manager.BackPackManager;
+import me.maxi.mobilebackpack.Manager.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 
@@ -43,25 +46,28 @@ public class BackPackSafeListener implements Listener {
                 player.openInventory(BackPackManager.backPack(player, UUID, newPage, safeSubPage.get(player)));
             }
             if (slot == 46){
-                player.openInventory(BackPackManager.putUpgradeItem());
+                ItemStack nw = new ItemBuilder(Material.LIGHT_GRAY_STAINED_GLASS_PANE, 1).setDisplayName("§c§lWAIT").addItemFlag(ItemFlag.HIDE_PLACED_ON).addItemFlag(ItemFlag.HIDE_ENCHANTS).addEnchantment(Enchantment.LUCK,1,true).build();
+                replaceInventoryItem(player, BackPackManager.openBackPack.get(player), nw);
+                AnimatedInventory animatedInventory = new AnimatedInventory(player, BackPackManager.openBackPack.get(player));
+                animatedInventory.open();
             }
             if (slot == 47){
-                int pageTitel = Integer.parseInt(event.getView().getTitle().replace(Main.BACKPACKNAME+level+" §7▬§8▪ §aPage ", ""));
+                int pageTitel = Integer.parseInt(event.getView().getTitle().replace(Main.BACKPACKNAME+level+" §7▬§8▪ §aSeite ", ""));
                 isInTools.put(player, pageTitel);
                 player.openWorkbench(null, true);
             }
             if (slot == 51){
-                int pageTitel = Integer.parseInt(event.getView().getTitle().replace(Main.BACKPACKNAME+level+" §7▬§8▪ §aPage ", ""));
+                int pageTitel = Integer.parseInt(event.getView().getTitle().replace(Main.BACKPACKNAME+level+" §7▬§8▪ §aSeite ", ""));
                 isInTools.put(player, pageTitel);
                 player.openAnvil(null, true);
             }
             if (slot == 45 && item.getType().equals(Material.PLAYER_HEAD)){
-                int pageTitel = Integer.parseInt(event.getView().getTitle().replace(Main.BACKPACKNAME+level+" §7▬§8▪ §aPage ", ""));
+                int pageTitel = Integer.parseInt(event.getView().getTitle().replace(Main.BACKPACKNAME+level+" §7▬§8▪ §aSeite ", ""));
                 player.closeInventory();
                 player.openInventory(BackPackManager.backPack(player, UUID, pageTitel, 1));
             }
             if (slot == 53 && item.getType().equals(Material.PLAYER_HEAD)){
-                int pageTitel = Integer.parseInt(event.getView().getTitle().replace(Main.BACKPACKNAME+level+" §7▬§8▪ §aPage ", ""));
+                int pageTitel = Integer.parseInt(event.getView().getTitle().replace(Main.BACKPACKNAME+level+" §7▬§8▪ §aSeite ", ""));
                 player.closeInventory();
                 player.updateInventory();
                 player.openInventory(BackPackManager.backPack(player, UUID, pageTitel, 2));
@@ -70,41 +76,29 @@ public class BackPackSafeListener implements Listener {
                 event.setCancelled(true);
             }
         }
-
         if (event.getView().getTitle().startsWith("§8┃ » §3§lSystem §7▬§8▪ §cWähle")) {
-            if (item.getItemFlags().contains(ItemFlag.HIDE_DYE) && item.getType().equals(Material.RED_STAINED_GLASS_PANE)){
-                event.setCancelled(true);
-            }
             if (item.getItemFlags().contains(ItemFlag.HIDE_DYE) && item.getType().equals(Material.ORANGE_STAINED_GLASS_PANE)){
                 event.setCancelled(true);
                 ItemStack backpackitem = BackPackManager.openBackPack.get(player);
                 double price = Double.valueOf(getPrice(item));
                 Main.getEcoManager().removeMoneyFromPlayer(player, price);
                 try {
-                    player.getInventory().addItem(BackPackManager.onUpgradeBackPack(backpackitem));
+                    ItemStack nw = new ItemBuilder(Material.LIGHT_GRAY_STAINED_GLASS_PANE, 1).setDisplayName("§c§lWAIT").addItemFlag(ItemFlag.HIDE_PLACED_ON).addItemFlag(ItemFlag.HIDE_ENCHANTS).addEnchantment(Enchantment.LUCK,1,true).build();
+                    replaceInventoryItem(player,nw,BackPackManager.onUpgradeBackPack(backpackitem));
                     player.sendMessage("§a§lErfolgreich Upgegradet");
                     player.closeInventory();
                 }catch (IOException ignored){
+                    player.sendMessage("§c§lERROR");
                 }
+            }else {
+                event.setCancelled(true);
             }
             if (slot == 13){
                 event.setCancelled(true);
             }
         }
-        if (event.getView().getTitle().equalsIgnoreCase("§8┃ » §3§lSystem §7▬§8▪ §cÜbergebe das Item")){
-            if (item.getItemFlags().contains(ItemFlag.HIDE_DYE) && item.getType().equals(Material.LIME_STAINED_GLASS_PANE)){
-                if (event.getInventory().getItem(13).equals(Material.AIR) && event.getInventory().getItem(13) == null){
-                    event.setCancelled(true);
-                }else if (BackPackManager.isBackPack(Objects.requireNonNull(event.getInventory().getItem(13)))) {
-                    AnimatedInventory animatedInventory = new AnimatedInventory(player, event.getInventory().getItem(13));
-                    animatedInventory.open();
-                }else {
-                    event.setCancelled(true);
-                }
-            }
-            if (item.getItemFlags().contains(ItemFlag.HIDE_DYE) && (item.getType().equals(Material.GREEN_STAINED_GLASS_PANE) || item.getType().equals(Material.PLAYER_HEAD))){
-                event.setCancelled(true);
-            }
+        if (event.getView().getTitle().equalsIgnoreCase("§8┃ » §3§lSystem §7▬§8▪ §cChecking...")){
+            event.setCancelled(true);
         }
     }
     @EventHandler
@@ -119,12 +113,10 @@ public class BackPackSafeListener implements Listener {
                 }, 1);
             }
         }
-        if (event.getView().getTitle().equalsIgnoreCase("§8┃ » §3§lSystem §7▬§8▪ §cÜbergebe das Item")){
-            if (BackPackManager.isBackPack(Objects.requireNonNull(event.getInventory().getItem(13)))) {
-                AnimatedInventory animatedInventory = new AnimatedInventory(player, event.getInventory().getItem(13));
-                animatedInventory.open();
-            }
-            return;
+        if (event.getView().getTitle().equalsIgnoreCase("§8┃ » §3§lSystem §7▬§8▪ §cWähle")){
+            ItemStack backpackitem = BackPackManager.openBackPack.get(player);
+            ItemStack nw = new ItemBuilder(Material.LIGHT_GRAY_STAINED_GLASS_PANE, 1).setDisplayName("§c§lWAIT").addItemFlag(ItemFlag.HIDE_PLACED_ON).addItemFlag(ItemFlag.HIDE_ENCHANTS).addEnchantment(Enchantment.LUCK,1,true).build();
+            replaceInventoryItem(player,nw,backpackitem);
         }
         if (!(event.getView().getTitle().contains(Main.BACKPACKNAME)))return;
         ItemStack backPackItem = BackPackManager.openBackPack.get(player);
@@ -132,7 +124,7 @@ public class BackPackSafeListener implements Listener {
         assert loreList != null;
         String UUID = BackPackManager.getUUID(backPackItem);
         int level = Main.getConfigManager().getLevel(UUID);
-        int pageTitel = Integer.parseInt(event.getView().getTitle().replace(Main.BACKPACKNAME+level+" §7▬§8▪ §aPage ", ""));
+        int pageTitel = Integer.parseInt(event.getView().getTitle().replace(Main.BACKPACKNAME+level+" §7▬§8▪ §aSeite ", ""));
         BackPackManager.saveInv(player, UUID, pageTitel, event.getInventory());
     }
 
@@ -140,7 +132,15 @@ public class BackPackSafeListener implements Listener {
     public static String getPrice(ItemStack item) {
         List<String> lore = item.getItemMeta().getLore();
         StringBuilder sb = new StringBuilder();
-        sb.append(lore.get(1));
+        sb.append(lore.get(0));
         return sb.toString().replace("§7Kaufbar §7- §3$","").replace(",","");
     }
+    public void replaceInventoryItem(Player player, ItemStack oldItem, ItemStack newItem) {
+        Inventory inventory = player.getInventory();
+        int slot = inventory.first(oldItem);
+        if (slot != -1) {
+            inventory.setItem(slot, newItem);
+        }
+    }
+
 }

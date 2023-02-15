@@ -29,7 +29,7 @@ public final class Main extends JavaPlugin {
 
     private static final Logger log = Logger.getLogger("Minecraft");
     private static Economy econ = null;
-    public static final String BACKPACKNAME = "§8┃ » §f§lBackpack §7▬§8▪ §9Level ";
+    public static final String BACKPACKNAME = "§8┃ » §f§lRucksack §7▬§8▪ §9Level ";
     public static ConfigManager configManager;
     public static Main main;
     public static EcoManager ecoManager;
