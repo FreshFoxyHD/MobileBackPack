@@ -1,6 +1,6 @@
 package me.maxi.mobilebackpack.commands;
 
-import me.maxi.mobilebackpack.Manager.BackPackManager;
+import me.maxi.mobilebackpack.manager.BackPackManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

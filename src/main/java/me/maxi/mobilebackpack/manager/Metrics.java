@@ -1,4 +1,4 @@
-package me.maxi.mobilebackpack.Manager;
+package me.maxi.mobilebackpack.manager;
 
 /*
  * This Metrics class was auto-generated and can be copied into your project if you are

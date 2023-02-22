@@ -1,11 +1,8 @@
-package me.maxi.mobilebackpack.Manager;
+package me.maxi.mobilebackpack.manager;
 
 import me.maxi.mobilebackpack.Main;
-import net.milkbowl.vault.economy.Economy;
-import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;

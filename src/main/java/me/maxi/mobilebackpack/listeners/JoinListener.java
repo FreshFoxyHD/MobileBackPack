@@ -1,7 +1,7 @@
 package me.maxi.mobilebackpack.listeners;
 
 import me.maxi.mobilebackpack.Main;
-import me.maxi.mobilebackpack.Manager.JsonReader;
+import me.maxi.mobilebackpack.manager.JsonReader;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

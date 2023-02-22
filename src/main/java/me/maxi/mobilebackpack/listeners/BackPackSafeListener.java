@@ -1,9 +1,9 @@
 package me.maxi.mobilebackpack.listeners;
 
 import me.maxi.mobilebackpack.Main;
-import me.maxi.mobilebackpack.Manager.AnimatedInventory;
-import me.maxi.mobilebackpack.Manager.BackPackManager;
-import me.maxi.mobilebackpack.Manager.ItemBuilder;
+import me.maxi.mobilebackpack.manager.AnimatedInventory;
+import me.maxi.mobilebackpack.manager.BackPackManager;
+import me.maxi.mobilebackpack.manager.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -19,7 +19,6 @@ import org.bukkit.inventory.ItemStack;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 public class BackPackSafeListener implements Listener {
     public static HashMap<Player, Integer> isInTools = new HashMap<>();

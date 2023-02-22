@@ -1,4 +1,4 @@
-package me.maxi.mobilebackpack.Manager;
+package me.maxi.mobilebackpack.manager;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;

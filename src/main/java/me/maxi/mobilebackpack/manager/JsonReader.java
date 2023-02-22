@@ -1,4 +1,4 @@
-package me.maxi.mobilebackpack.Manager;
+package me.maxi.mobilebackpack.manager;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -1,6 +1,6 @@
 package me.maxi.mobilebackpack.listeners;
 
-import me.maxi.mobilebackpack.Manager.BackPackManager;
+import me.maxi.mobilebackpack.manager.BackPackManager;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

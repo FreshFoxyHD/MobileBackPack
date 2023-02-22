@@ -1,4 +1,4 @@
-package me.maxi.mobilebackpack.Manager;
+package me.maxi.mobilebackpack.manager;
 
 import me.maxi.mobilebackpack.Main;
 import me.maxi.mobilebackpack.listeners.BackPackSafeListener;
@@ -6,11 +6,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.io.BukkitObjectInputStream;
 import org.bukkit.util.io.BukkitObjectOutputStream;
 

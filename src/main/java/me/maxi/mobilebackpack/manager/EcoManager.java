@@ -1,4 +1,4 @@
-package me.maxi.mobilebackpack.Manager;
+package me.maxi.mobilebackpack.manager;
 
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;

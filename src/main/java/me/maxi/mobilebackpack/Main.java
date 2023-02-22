@@ -1,9 +1,9 @@
 package me.maxi.mobilebackpack;
 
-import me.maxi.mobilebackpack.Manager.ConfigManager;
-import me.maxi.mobilebackpack.Manager.EcoManager;
-import me.maxi.mobilebackpack.Manager.JsonReader;
-import me.maxi.mobilebackpack.Manager.Metrics;
+import me.maxi.mobilebackpack.manager.ConfigManager;
+import me.maxi.mobilebackpack.manager.EcoManager;
+import me.maxi.mobilebackpack.manager.JsonReader;
+import me.maxi.mobilebackpack.manager.Metrics;
 import me.maxi.mobilebackpack.commands.GiveBackPackCommand;
 import me.maxi.mobilebackpack.commands.UpgradeBackPackCommand;
 import me.maxi.mobilebackpack.listeners.BackPackOpenerListener;
@@ -14,7 +14,6 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import net.milkbowl.vault.economy.Economy;
-import net.milkbowl.vault.economy.EconomyResponse;
 
 import java.io.IOException;
 import java.util.logging.Logger;
